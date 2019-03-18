@@ -1,5 +1,7 @@
 # MQTT Relay Agent
 
+Please STAR this repository if you like me | ᐕ)⁾⁾
+
 ## Try me
 
 An instance of this demo is already running on yejiaxi.cn,
