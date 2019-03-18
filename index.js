@@ -1,36 +1,31 @@
 var MQTT = require("async-mqtt");
 
-const topic = 'te/st'
-var client = MQTT.connect("tcp://yejiaxi.cn:1883");
+const topic = process.env.TOPIC || 'jiaxi/relay'
 
+var publicServer = MQTT.connect(process.env.SRC_HOST || "tcp://broker.mqttdashboard.com:1883");
+var privateServer = MQTT.connect(process.env.DEST_HOST || "tcp://test.mosquitto.org:1883");
 
-client.on("connect", async () => {
-
-	console.log("onConnect:");
+publicServer.on("connect", async () => {
+	console.log("Connected");
 	try {
-		await client.subscribe(topic);
-
-		await client.publish(topic, "It works!");
-		// await client.end();
-    console.log("Done");
-    
+		await publicServer.subscribe(topic);
+    console.log("Subcribe topic: ", topic);    
 	} catch (e){
 		console.log('ERROR')
 		console.log(e.stack);
-		// process.exit();
 	}
 })
 
-client.on("message", async (topic, message) => {
-  console.log('onMessage:')
-	console.log(message.toString())
+publicServer.on("message", async (topic, message) => {
+  // console.log('onMessage:')
+	// console.log(message.toString())
 	try {
-		await client.publish(topic, message);
-		// await client.end();
-    console.log("Done");
-    
+		await privateServer.publish(topic, message);
+    // console.log("Sent to private server.");
 	} catch (e){
 		console.log(e.stack);
 		process.exit();
 	}
 })
+
+
