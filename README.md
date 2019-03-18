@@ -18,7 +18,7 @@ subscribing topic "jiaxi/relay" from broker.mqttdashboard.com and re-publishing 
 
 
 
-**Architecture**
+## Architecture
 
 | Role | Demo Instance |
 |:---:|:---:|
