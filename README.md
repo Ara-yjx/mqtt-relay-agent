@@ -26,7 +26,7 @@ subscribing topic "jiaxi/relay" from broker.mqttdashboard.com and re-publishing 
 | ↓ ||
 | Public Server | broker.mqttdashboard.com | 
 | ↓ ||
-| Subsciption Agent | this program on yejiaxi.cn | 
+| Relay Agent | this program on yejiaxi.cn | 
 | ↓ ||
 | Home Server | test.mosquitto.org |
 | ↓ ||
